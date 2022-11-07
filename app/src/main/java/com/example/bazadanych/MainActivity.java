@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         log_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if()
-                {}
+             /*   if()
+                {}*/
             }
         });
         register=findViewById(R.id.rejestruj);
