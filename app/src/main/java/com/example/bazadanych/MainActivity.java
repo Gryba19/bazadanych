@@ -3,10 +3,12 @@ package com.example.bazadanych;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     MyDatabase database;
@@ -14,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     EditText password;
     Button log_in;
     Button register;
+    TextView tekst;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,11 +25,27 @@ public class MainActivity extends AppCompatActivity {
         login=findViewById(R.id.imie);
         password=findViewById(R.id.haslo);
         log_in=findViewById(R.id.zaloguj);
+        tekst=findViewById(R.id.textView7);
         log_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             /*   if()
-                {}*/
+                String Name= String.valueOf(login.getText().toString());
+                String Password=String.valueOf(password.getText().toString());
+                 StringBuilder builder = new StringBuilder();
+                Cursor cursor = database.checkPerson(Name, Password);
+                while(cursor.moveToNext()) {
+                    builder.append("\nImie:" + cursor.getString(0));
+                    builder.append("\nHaslo:" + cursor.getString(1));
+                    builder.append("\nAdmin:" + cursor.getString(2));
+                    builder.append("\n---------------------");
+                }
+                tekst.setText(builder.toString());
+                //database.checkPerson(Name,Password);
+               /* if(Name=="admin" && Password=="abc456")
+                {
+                    Intent intent = new Intent(MainActivity.this, LoggedActivity.class);
+                    startActivity(intent);
+                }*/
             }
         });
         register=findViewById(R.id.rejestruj);
