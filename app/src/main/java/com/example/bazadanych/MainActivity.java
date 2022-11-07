@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-
+    MyDatabase database;
     EditText login;
     EditText password;
     Button log_in;
@@ -18,9 +18,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        login=findViewById(R.id.login);
+        database= new MyDatabase(this,"people", null,1);
+        login=findViewById(R.id.imie);
         password=findViewById(R.id.haslo);
         log_in=findViewById(R.id.zaloguj);
+        log_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if()
+                {}
+            }
+        });
         register=findViewById(R.id.rejestruj);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
