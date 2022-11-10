@@ -41,13 +41,14 @@ public class MyDatabase<admin> extends SQLiteOpenHelper {
         db.insertOrThrow("people",null,values);
     }
     public Cursor getAllPeople(){
-        String[] columns ={"id","name","surname","admin"};
+        String[] columns ={"id","name","surname","admin","password"};
         SQLiteDatabase db = getReadableDatabase();
         return db.query("people",columns,null,null,null,null,null);
     }
     public Cursor checkPerson(String name, String password){
         SQLiteDatabase db = getReadableDatabase();
-        String[] columns={"name","password"};
-        return db.query("people", columns, "name=", new String[] {String.valueOf(name)}, null ,null, null);
+        String[] columns={"name", "admin"};
+ //       return db.query("people", columns, "name=? and password=? and admin=?", new String[] {String.valueOf(name),String.valueOf(password)}, null ,null, null);
+        return db.query("people", columns, "name=? and password=?", new String[] {"a","a"}, null ,null, null);
     }
 }
