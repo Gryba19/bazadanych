@@ -2,6 +2,7 @@ package com.example.bazadanych;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     Button log_in;
     Button register;
     TextView tekst;
+    Button pokaz;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +28,15 @@ public class MainActivity extends AppCompatActivity {
         login=findViewById(R.id.imie);
         password=findViewById(R.id.haslo);
         log_in=findViewById(R.id.zaloguj);
-        tekst=findViewById(R.id.textView7);
+        tekst=findViewById(R.id.zalogujInfo);
+        pokaz=findViewById(R.id.pokaz);
+        pokaz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, LoggedActivity.class);
+                startActivity(intent);
+            }
+        });
         log_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,13 +44,16 @@ public class MainActivity extends AppCompatActivity {
                 String Password=String.valueOf(password.getText().toString());
                  StringBuilder builder = new StringBuilder();
                 Cursor cursor = database.checkPerson(Name, Password);
-                while(cursor.moveToNext()) {
+               if(cursor.moveToFirst()) {
                     builder.append("\nImie:" + cursor.getString(0));
-                    builder.append("\nHaslo:" + cursor.getString(1));
-                    builder.append("\nAdmin:" + cursor.getString(2));
+                    builder.append("\nAdmin:" + cursor.getString(1));
                     builder.append("\n---------------------");
-                }
-                tekst.setText(builder.toString());
+                   tekst.setText(builder.toString());
+               }
+                else{
+                   tekst.setText("pusto");
+               }
+
                 //database.checkPerson(Name,Password);
                /* if(Name=="admin" && Password=="abc456")
                 {
