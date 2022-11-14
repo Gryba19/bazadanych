@@ -49,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
                     builder.append("\nAdmin:" + cursor.getString(1));
                     builder.append("\n---------------------");
                    tekst.setText(builder.toString());
+                   if (String.valueOf(cursor.getString(1))=="1")
+                   {
+                       Intent intent = new Intent(MainActivity.this, LoggedActivity.class);
+                       startActivity(intent);
+                   }
                }
                 else{
                    tekst.setText("pusto");
