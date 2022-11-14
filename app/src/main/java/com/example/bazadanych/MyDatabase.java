@@ -48,7 +48,7 @@ public class MyDatabase<admin> extends SQLiteOpenHelper {
     public Cursor checkPerson(String name, String password){
         SQLiteDatabase db = getReadableDatabase();
         String[] columns={"name", "admin"};
- //       return db.query("people", columns, "name=? and password=? and admin=?", new String[] {String.valueOf(name),String.valueOf(password)}, null ,null, null);
-        return db.query("people", columns, "name=? and password=?", new String[] {"a","a"}, null ,null, null);
+        return db.query("people", columns, "name=? and password=? and admin=?", new String[] {String.valueOf(name),String.valueOf(password)}, null ,null, null);
+      //  return db.query("people", columns, "name=? and password=?", new String[] {"a","a"}, null ,null, null);
     }
 }

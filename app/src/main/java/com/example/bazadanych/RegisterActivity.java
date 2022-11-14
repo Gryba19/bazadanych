@@ -35,15 +35,16 @@ public class RegisterActivity extends AppCompatActivity {
                 String Surname=String.valueOf(nazwiko.getText().toString());
                 String Password=String.valueOf(haslo.getText().toString());
                 String rePassword=String.valueOf(rhaslo.getText().toString());
-              //  if(Password==rePassword) {
+                if(Password.length()>0 &&rePassword.length()>0 && Name.length()>0 && Surname.length()>0) {
                     database.registerPerson(String.valueOf(Name), String.valueOf(Surname), String.valueOf(Password),0);
                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);
-             /*   }
+
+                }
                 else
                 {
-                    Toast.makeText(RegisterActivity.this, "Hasła nie są takie same", Toast.LENGTH_SHORT).show();
-                }*/
+                    Toast.makeText(RegisterActivity.this, "jakieś pole jest puste", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         wroc.setOnClickListener(new View.OnClickListener() {

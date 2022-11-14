@@ -54,12 +54,6 @@ public class MainActivity extends AppCompatActivity {
                    tekst.setText("pusto");
                }
 
-                //database.checkPerson(Name,Password);
-               /* if(Name=="admin" && Password=="abc456")
-                {
-                    Intent intent = new Intent(MainActivity.this, LoggedActivity.class);
-                    startActivity(intent);
-                }*/
             }
         });
         register=findViewById(R.id.rejestruj);
