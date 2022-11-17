@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     MyDatabase database;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     Button log_in;
     Button register;
     TextView tekst;
-    Button pokaz;
+   // Button pokaz;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +30,14 @@ public class MainActivity extends AppCompatActivity {
         password=findViewById(R.id.haslo);
         log_in=findViewById(R.id.zaloguj);
         tekst=findViewById(R.id.zalogujInfo);
-        pokaz=findViewById(R.id.pokaz);
+        /*pokaz=findViewById(R.id.pokaz);
         pokaz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this, LoggedActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
         log_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,11 +50,17 @@ public class MainActivity extends AppCompatActivity {
                     builder.append("\nAdmin:" + cursor.getString(1));
                     builder.append("\n---------------------");
                    tekst.setText(builder.toString());
-                   if (String.valueOf(cursor.getString(1))=="1")
+                   if (cursor.getInt(1)==1)
+                   {
+                       Intent intent = new Intent(MainActivity.this, LoggedAdmin.class);
+                       startActivity(intent);
+                   }
+                   else
                    {
                        Intent intent = new Intent(MainActivity.this, LoggedActivity.class);
                        startActivity(intent);
                    }
+
                }
                 else{
                    tekst.setText("pusto");

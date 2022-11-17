@@ -92,7 +92,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.619" />
 
-    <Button
+   <!-- <Button
         android:id="@+id/pokaz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,6 +102,6 @@
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.976" /> -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
