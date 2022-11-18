@@ -56,4 +56,9 @@ public class MyDatabase<admin> extends SQLiteOpenHelper {
         return db.query("people", columns, "name=? and password=?", new String[] {String.valueOf(name),String.valueOf(password)}, null ,null, null);
       //  return db.query("people", columns, "name=? and password=?", new String[] {"a","a"}, null ,null, null);
     }
+    public int deletePerson(String id){
+        SQLiteDatabase db = getWritableDatabase();
+        String[] columns={"id","name","surname","admin"};
+        return db.delete("people", "id="+id, null);
+    }
 }
