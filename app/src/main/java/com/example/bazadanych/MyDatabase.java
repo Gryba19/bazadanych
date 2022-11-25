@@ -1,5 +1,7 @@
 package com.example.bazadanych;
 
+import static android.database.sqlite.SQLiteDatabase.CONFLICT_NONE;
+
 import androidx.annotation.Nullable;
 
 import android.content.ContentValues;
@@ -60,5 +62,15 @@ public class MyDatabase<admin> extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         String[] columns={"id","name","surname","admin"};
         return db.delete("people", "id="+id, null);
+    }
+   /* public Cursor shareAdmin(String id){
+        SQLiteDatabase db = getWritableDatabase();
+        String[] columns={"id","admin"};
+        return db.query("people", columns, "id=?",new String[] {String.valueOf(id)}, null ,null, null);
+    }*/
+    public int updateUser(Integer admin, String id) {
+        SQLiteDatabase db = getWritableDatabase();
+        String[] columns={"id","admin"};
+        return db.update("people",admin ,"id=?" ,new String[]{String.valueOf(id)},CONFLICT_NONE);
     }
 }
