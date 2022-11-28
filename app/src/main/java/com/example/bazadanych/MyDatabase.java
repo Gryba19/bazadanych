@@ -71,6 +71,8 @@ public class MyDatabase<admin> extends SQLiteOpenHelper {
     public int updateUser(Integer admin, String id) {
         SQLiteDatabase db = getWritableDatabase();
         String[] columns={"id","admin"};
-        return db.update("people",admin ,"id=?" ,new String[]{String.valueOf(id)},CONFLICT_NONE);
+        ContentValues values = new ContentValues();
+        values.put("admin",admin);
+        return db.update("people",values,"id=?" ,new String[]{String.valueOf(id)});
     }
 }
