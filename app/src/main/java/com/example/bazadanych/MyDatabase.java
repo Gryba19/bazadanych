@@ -75,4 +75,13 @@ public class MyDatabase<admin> extends SQLiteOpenHelper {
         values.put("admin",admin);
         return db.update("people",values,"id=?" ,new String[]{String.valueOf(id)});
     }
+    public int takeAdmin(Integer admin, String name) {
+        SQLiteDatabase db = getWritableDatabase();
+        String[] columns={"id","admin","name"};
+        String adname = "admin";
+        ContentValues values = new ContentValues();
+        values.put("admin",admin);
+            return db.update("people", values, " name=?", new String[]{String.valueOf(name)});
+
+    }
 }

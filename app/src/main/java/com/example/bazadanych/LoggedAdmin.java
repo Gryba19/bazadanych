@@ -15,6 +15,7 @@ public class LoggedAdmin extends AppCompatActivity {
     TextView users;
     Button wroc;
     Button usun;
+    Button set;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +24,14 @@ public class LoggedAdmin extends AppCompatActivity {
         users=findViewById(R.id.allPeople);
         wroc=findViewById(R.id.wroc);
         usun=findViewById(R.id.delete);
+        set=findViewById(R.id.give);
+        set.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(LoggedAdmin.this,setAdmin.class);
+                startActivity(intent);
+            }
+        });
         usun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
